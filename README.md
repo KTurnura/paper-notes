@@ -1,12 +1,45 @@
-# # 论文笔记
+# 论文笔记
 
 看到有前辈在github上记录自己读论文的一些记录，以此也想记录并分享一些自己对论文的一些看法。从九月份刚入学开始，读了一部分博客推荐的经典论文，后面开始跟MIT 6.824的课程，MIT课程的代码可能会在repository中更新并解读，关于论文的一些想法会在[issue](https://github.com/KTurnura/paper-notes/issues)中记录，有对论文有见解的可以在issue中评论，也可以分享一些您认为某篇论文的扩展和值得读的论文
 
-后续一些关键论文的解读可能会放在自己的 [博客](https://github.com/KTurnura/KTurnura.github.io) 中，如果准备对某篇博客进行解读会在issue中指出
+后续一些关键论文的解读可能会放在自己的 [博客](https://kturnura.github.io) 中，如果准备对某篇博客进行解读会在issue中指出
 
 关于readme，打算周期性展示一个月内读过的论文，然后每月更新之后归档上一个月的论文
 
-[toc]
+# 2023-9/10月目录
+
+Table of Contents
+=================
+* [1. architecutre](#1-architecutre)
+   * [1.1 Lambda](#11-lambda)
+   * [1.2 Kappa](#12-kappa)
+   * [1.3 summingbird ： twitter](#13-summingbird--twitter)
+   * [1.4 Kappa vs Lambda](#14-kappa-vs-lambda)
+* [2. Database](#2-database)
+   * [2.1 Scalable SQL and Nosql data stores](#21-scalable-sql-and-nosql-data-stores)
+* [3. File System](#3-file-system)
+   * [3.1 GFS](#31-gfs)
+* [4. Data Storage Layer](#4-data-storage-layer)
+   * [4.1 BigTable](#41-bigtable)
+* [# 5. CAP theorem &amp;&amp; ACID](#-5-cap-theorem--acid)
+   * [5.1 <strong>Time, Clocks, and the Ordering of Events in a Distributed System</strong>](#51-time-clocks-and-the-ordering-of-events-in-a-distributed-system)
+   * [5.2 1982_Byzantine Generals Problem](#52-1982_byzantine-generals-problem)
+   * [5.3 2005_<strong>Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services</strong>](#53-2005_brewers-conjecture-and-the-feasibility-of-consistent-available-partition-tolerant-web-services)
+   * [5.4 <strong>2012_ CAP Twelve years later how the rules have changed</strong>](#54-2012_-cap-twelve-years-later-how-the-rules-have-changed)
+   * [5.5 2008_An ACID Alternative : BASE](#55-2008_an-acid-alternative--base)
+   * [5.6 Zookeeper : A simple totally ordered broadcast protocol](#56-zookeeper--a-simple-totally-ordered-broadcast-protocol)
+   * [5.7 The Design of a Practical System for Fault-Tolerant Virtual Machines](#57-the-design-of-a-practical-system-for-fault-tolerant-virtual-machines)
+   * [5.8 Raft : 2014 Raft In Search of Undersatandable consensus Algorithm](#58-raft--2014-raft-in-search-of-undersatandable-consensus-algorithm)
+* [6. Batch processing](#6-batch-processing)
+   * [6.1 Mapreduce](#61-mapreduce)
+* [7. Blog](#7-blog)
+   * [1. you can't sacrifice partition tolerance](#1-you-cant-sacrifice-partition-tolerance)
+   * [2. Challenges of Data Stream Processing : big data Streams 1:!](#2-challenges-of-data-stream-processing--big-data-streams-1)
+   * [3. <strong>条分缕析分布式：到底什么是一致性？</strong>](#3-条分缕析分布式到底什么是一致性)
+   * [4. <strong>条分缕析_强弱一致性</strong>](#4-条分缕析_强弱一致性)
+   * [5. <strong>漫谈分布式系统、拜占庭将军问题与区块链</strong>](#5-漫谈分布式系统拜占庭将军问题与区块链)
+
+<!-- Created by https://github.com/ekalinin/github-markdown-toc -->
 
 #  1. architecutre
 
