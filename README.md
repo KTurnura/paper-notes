@@ -12,34 +12,36 @@ PS：早期高估了自己的英语能力，有些关键点使用英文写在笔
 
 Table of Contents
 =================
+
 * [1. architecutre](#1-architecutre)
    * [1.1 Lambda](#11-lambda)
    * [1.2 Kappa](#12-kappa)
-   * [1.3 summingbird ： twitter](#13-summingbird--twitter)
-   * [1.4 Kappa vs Lambda](#14-kappa-vs-lambda)
+   * [1.3 2014_summingbird ,VLDB, twitter](#13-2014_summingbird-vldb-twitter)
 * [2. Database](#2-database)
-   * [2.1 Scalable SQL and Nosql data stores](#21-scalable-sql-and-nosql-data-stores)
+   * [2.1 2010_Scalable SQL and Nosql data stores](#21-2010_scalable-sql-and-nosql-data-stores)
 * [3. File System](#3-file-system)
-   * [3.1 GFS](#31-gfs)
+   * [3.1 2003_GFS](#31-2003_gfs)
 * [4. Data Storage Layer](#4-data-storage-layer)
-   * [4.1 BigTable](#41-bigtable)
-* [5. CAP theorem &amp;&amp; ACID](#-5-cap-theorem--acid)
-   * [5.1 Time, Clocks, and the Ordering of Events in a Distributed System](#51-time-clocks-and-the-ordering-of-events-in-a-distributed-system)
+   * [4.1 2006_BigTable](#41-2006_bigtable)
+* [5. CAP theorem &amp;&amp; ACID](#5-cap-theorem--acid)
+   * [5.1 1978_Time, Clocks, and the Ordering of Events in a Distributed System](#51-1978_time-clocks-and-the-ordering-of-events-in-a-distributed-system)
    * [5.2 1982_Byzantine Generals Problem](#52-1982_byzantine-generals-problem)
    * [5.3 2005_Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services](#53-2005_brewers-conjecture-and-the-feasibility-of-consistent-available-partition-tolerant-web-services)
    * [5.4 2012_ CAP Twelve years later how the rules have changed](#54-2012_-cap-twelve-years-later-how-the-rules-have-changed)
    * [5.5 2008_An ACID Alternative : BASE](#55-2008_an-acid-alternative--base)
-   * [5.6 Zookeeper : A simple totally ordered broadcast protocol](#56-zookeeper--a-simple-totally-ordered-broadcast-protocol)
-   * [5.7 The Design of a Practical System for Fault-Tolerant Virtual Machines](#57-the-design-of-a-practical-system-for-fault-tolerant-virtual-machines)
-   * [5.8 Raft : 2014 Raft In Search of Undersatandable consensus Algorithm](#58-raft--2014-raft-in-search-of-undersatandable-consensus-algorithm)
+   * [5.6 2008_Zookeeper : A simple totally ordered broadcast protocol](#56-2008_zookeeper--a-simple-totally-ordered-broadcast-protocol)
+   * [5.7 2010_The Design of a Practical System for Fault-Tolerant Virtual Machines](#57-2010_the-design-of-a-practical-system-for-fault-tolerant-virtual-machines)
+   * [5.8 2014_Raft: In Search of Undersatandable consensus Algorithm](#58-2014_raft-in-search-of-undersatandable-consensus-algorithm)
 * [6. Batch processing](#6-batch-processing)
-   * [6.1 Mapreduce](#61-mapreduce)
+   * [6.1 2008_Mapreduce](#61-2008_mapreduce)
 * [7. Blog](#7-blog)
    * [1. you can't sacrifice partition tolerance](#1-you-cant-sacrifice-partition-tolerance)
-   * [2. Challenges of Data Stream Processing : big data Streams 1:!](#2-challenges-of-data-stream-processing--big-data-streams-1)
+   * [2. Challenges of Data Stream Processing : big data Streams](#2-challenges-of-data-stream-processing--big-data-streams)
    * [3. 条分缕析分布式：到底什么是一致性？](#3-条分缕析分布式到底什么是一致性)
    * [4. 条分缕析_强弱一致性](#4-条分缕析_强弱一致性)
    * [5. 漫谈分布式系统、拜占庭将军问题与区块链](#5-漫谈分布式系统拜占庭将军问题与区块链)
+* [8. 个人论文](#8-个人论文)
+   * [1. 总结CAP理论](#1-总结cap理论)
 
 <!-- Created by https://github.com/ekalinin/github-markdown-toc -->
 
@@ -83,7 +85,9 @@ Summingbird程序是使用数据流抽象（例如源、接收器和存储）编
 
 # 2. Database 
 
-## 2.1 Scalable SQL and Nosql data stores
+## 2.1 2010_Scalable SQL and Nosql data stores
+
+https://dl.acm.org/doi/10.1145/1978915.1978919
 
 简单介绍NOSQL，旨在在许多服务器上扩展简单的 OLTP 样式应用程序负载。
 
@@ -110,7 +114,11 @@ NoSQL通常会牺牲一些维度，例如 数据库范围的事务一致性，�
 
 # 3. File System
 
-## 3.1 GFS
+## 3.1 2003_GFS
+
+https://research.google/pubs/pub51/
+
+[issue](https://github.com/KTurnura/paper-notes/issues/6)
 
 早期谷歌的三驾马车之一，放宽了对分布式系统的一致性，追求可扩展性和可用性。
 
@@ -134,7 +142,11 @@ Fault-Tolerance： Fast Recovery， Chunk Replication，Master Replication等
 
 # 4. Data Storage Layer
 
-## 4.1 BigTable
+## 4.1 2006_BigTable
+
+https://static.googleusercontent.com/media/research.google.com/zh-CN//archive/bigtable-osdi06.pdf
+
+[issue](https://github.com/KTurnura/paper-notes/issues/5)
 
 早期谷歌的三驾马车之一。
 
@@ -314,7 +326,9 @@ BASE 是ACID的反面， ACID是悲观并且强一致性，对于每一个操作
 
 传统服务需要进行横向扩展时，传统事务模型就会出现问题， 解耦操作并依次执行它们可以提高可用性和规模以一致性为代价。 BASE 提供了一个思考这种解耦的模型。
 
-## 5.6 Zookeeper : A simple totally ordered broadcast protocol
+## 5.6 2008_Zookeeper : A simple totally ordered broadcast protocol
+
+https://dl.acm.org/doi/abs/10.1145/1529974.1529978
 
 Zab协议是为分布式协调服务Zookeeper专门设计的一种支持崩溃恢复的原子广播协议，是Zookeeper保证数据一致性的核心算法。
 
@@ -350,11 +364,11 @@ Leader选举场景
 
 
 
-## 5.7 The Design of a Practical System for Fault-Tolerant Virtual Machines
+## 5.7 2010_The Design of a Practical System for Fault-Tolerant Virtual Machines
 
 https://dl.acm.org/doi/10.1145/1899928.1899932
 
-更多讨论见issue
+更多讨论见[issue](https://github.com/KTurnura/paper-notes/issues/4)
 
 基于通过另一台服务器上的备份虚拟机复制主虚拟机的执行的方法，实现了一个企业级的容错系统
 
@@ -380,15 +394,23 @@ primary 和 backup VMs都遵循着一个特殊的协议，包括备份虚拟机�
 1. 注意启动和重启Vitual Machine 的机制，
 2. 检测Primary 和 backup之间Logging Channel的流量
 
-## 5.8 Raft : 2014 Raft In Search of Undersatandable consensus Algorithm
+## 5.8 2014_Raft: In Search of Undersatandable consensus Algorithm
 
-知名 Raft
+https://dl.acm.org/doi/10.5555/2643634.2643666
+
+[issue](https://github.com/KTurnura/paper-notes/issues/3)
+
+Raft 是针对复制日志的一致性算法
+为了提高易理解性，Raft 分离了共识的关键要素，例如领导者选举、日志复制和安全性，并且它强制执行更强的一致性以减少必须考虑的状态数量。
+Raft同样包含一个新的改变集群成员的机制，同时使用重叠多数来保证安全
 
 # 6. Batch processing
 
-## 6.1 Mapreduce
+## 6.1 2008_Mapreduce
 
-见issue
+https://dl.acm.org/doi/abs/10.1145/1327452.1327492
+
+[issue](https://github.com/KTurnura/paper-notes/issues/2)
 
 
 # 7. Blog
@@ -482,9 +504,9 @@ http://zhangtielei.com/posts/blog-consensus-byzantine-and-blockchain.html
 
 
 
-# 8 PDF 格式创作
+# 8. 个人论文
 
-总结CAP理论
+## 1. 总结CAP理论
 
 https://github.com/KTurnura/KTurnura.github.io/blob/master/pdf/CAP_theorem.pdf
 
